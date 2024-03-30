@@ -42,7 +42,7 @@ let package = Package(
         .target(
              name: "SwiftUIPathwayLib",
              dependencies: [
-                 .target(name: "SwiftUIPathway"),
+//                 .target(name: "SwiftUIPathway"),
                  "Factory",
 //                 "AppsFlyerLib",
                  "Alamofire",
