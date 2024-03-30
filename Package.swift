@@ -16,13 +16,39 @@ let package = Package(
     ],
     
     dependencies: [
-        // Here you can add any dependencies to other Swift packages if necessary.
+        .package(
+            url: "https://github.com/hmlongco/Factory.git",
+            from: "1.0.0"
+        ),
+        .package(
+            url: "https://github.com/Alamofire/Alamofire.git",
+            from: "5.9.0"
+        ),
+        .package(
+            url: "https://github.com/kishikawakatsumi/KeychainAccess.git",
+            branch: "master"
+        ),
+        .package(
+            url:    "https://github.com/AppsFlyerSDK/AppsFlyerFramework.git",
+            from: "6.13.2"
+        )
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .binaryTarget(
             name: "SwiftUIPathway",
-            path: "./Binaries/SwiftUIPathway.xcframework")
+            path: "./Binaries/SwiftUIPathway.xcframework"),
+        .target(
+             name: "SwiftUIPathwayLib",
+             dependencies: [
+                 .target(name: "SwiftUIPathway"),
+                 "Factory",
+//                 "AppsFlyerLib",
+                 "Alamofire",
+                 "KeychainAccess"
+                 
+             ]
+         )
     ]
 )
